@@ -1,0 +1,87 @@
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#0f1923',
+    paddingTop: 50,
+    paddingHorizontal: 20,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  accent: {
+    width: 4,
+    height: 28,
+    backgroundColor: '#e8a020',
+    borderRadius: 2,
+    marginRight: 10,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    letterSpacing: 0.5,
+  },
+  subtitle: {
+    fontSize: 12,
+    color: '#6b7a8d',
+    marginBottom: 28,
+    marginLeft: 14,
+  },
+  label: {
+    fontSize: 11,
+    color: '#6b7a8d',
+    marginBottom: 6,
+    marginLeft: 2,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
+  input: {
+    backgroundColor: '#1a2535',
+    color: '#ffffff',
+    borderRadius: 10,
+    padding: 14,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#243044',
+    fontSize: 15,
+  },
+  btnRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginTop: 8,
+  },
+  btn: {
+    flex: 1,
+    backgroundColor: '#e8a020',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    shadowColor: '#e8a020',
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  btnText: {
+    color: '#0f1923',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  btnCancel: {
+    flex: 1,
+    backgroundColor: '#1a2535',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#243044',
+  },
+  btnCancelText: {
+    color: '#6b7a8d',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+});
