@@ -11,12 +11,40 @@ export default function AddPieceScreen({ onSave, onCancel, editingPiece }) {
   const [date, setDate] = useState(editingPiece ? editingPiece.date : '');
 
   const handleSave = () => {
-    if (!type || !brand || !serial || !date) {
-      alert('Por favor completa todos los campos');
-      return;
-    }
-    onSave({ id: uuid.v4(), type, brand, serial, price, date });
-  };
+  // Campos obligatorios vacíos
+  if (!type || !brand || !serial || !date) {
+    alert('Por favor completa todos los campos');
+    return;
+  }
+
+  // Precio: debe ser un número positivo
+  const parsedPrice = parseFloat(price);
+  if (price && (isNaN(parsedPrice) || parsedPrice < 0)) {
+    alert('El precio debe ser un número válido y positivo');
+    return;
+  }
+
+  // Fecha: formato YYYY-MM-DD
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!dateRegex.test(date)) {
+    alert('La fecha debe tener el formato YYYY-MM-DD (Ej: 2024-05-20)');
+    return;
+  }
+  const parsedDate = new Date(date);
+  if (isNaN(parsedDate.getTime())) {
+    alert('La fecha ingresada no es válida');
+    return;
+  }
+
+  // No. Serie: solo letras y números (sin espacios ni símbolos)
+  const serialRegex = /^[a-zA-Z0-9]+$/;
+  if (!serialRegex.test(serial)) {
+    alert('El No. de Serie solo puede contener letras y números, sin espacios');
+    return;
+  }
+
+  onSave({ id: editingPiece ? editingPiece.id : uuid.v4(), type, brand, serial, price: parsedPrice.toFixed(2), date });
+};
 
   return (
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
