@@ -1,6 +1,5 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import styles from '../styles/design_pieces';
+import { Alert, Text, TouchableOpacity, View } from "react-native";
+import styles from "../styles/design_pieces";
 
 export default function PieceItem({ piece, onDelete, onPress }) {
   return (
@@ -13,13 +12,22 @@ export default function PieceItem({ piece, onDelete, onPress }) {
         <Text style={styles.date}>{piece.date}</Text>
       </View>
       <View style={styles.divider} />
-   <TouchableOpacity
-  style={styles.deleteBtn}
-  onPress={onDelete}
-  onStartShouldSetResponder={() => true}
->
-  <Text style={styles.deleteText}>Eliminar</Text>
-</TouchableOpacity>
+      <TouchableOpacity
+        style={styles.deleteBtn}
+        onPress={() => {
+          Alert.alert(
+            "Eliminar pieza",
+            "¿Estás seguro que deseas eliminar esta pieza?",
+            [
+              { text: "Cancelar", style: "cancel" },
+              { text: "Eliminar", onPress: onDelete, style: "destructive" },
+            ],
+          );
+        }}
+        onStartShouldSetResponder={() => true}
+      >
+        <Text style={styles.deleteText}>Eliminar</Text>
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 }
