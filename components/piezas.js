@@ -13,9 +13,11 @@ export default function PieceItem({ piece, onDelete, onPress }) {
         <Text style={styles.date}>{piece.date}</Text>
       </View>
       <View style={styles.divider} />
-      <TouchableOpacity style={styles.deleteBtn} onPress={onDelete}>
-        <Text style={styles.deleteText}>Eliminar</Text>
-      </TouchableOpacity>
+    <TouchableOpacity 
+  style={styles.deleteBtn} 
+  onPress={(e) => { e.stopPropagation(); onDelete(); }}>
+  <Text style={styles.deleteText}>Eliminar</Text>
+</TouchableOpacity>
     </TouchableOpacity>
   );
 }
