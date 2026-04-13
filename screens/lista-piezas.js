@@ -26,15 +26,16 @@ export default function AddPieceScreen({ onSave, onCancel, editingPiece }) {
 
   // Fecha: formato YYYY-MM-DD
   const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-  if (!dateRegex.test(date)) {
-    alert("La fecha debe tener el formato YYYY-MM-DD (Ej: 2024-05-20)");
-    return;
-  }
-  const parsedDate = new Date(date);
-  if (isNaN(parsedDate.getTime())) {
-    alert("La fecha ingresada no es válida");
-    return;
-  }
+if (!dateRegex.test(date)) {
+  alert("La fecha debe tener el formato YYYY-MM-DD (Ej: 2024-05-20)");
+  return;
+}
+
+const [year, month, day] = date.split("-").map(Number);
+if (month < 1 || month > 12 || day < 1 || day > 31) {
+  alert("La fecha ingresada no es válida");
+  return;
+}
 
   // No. Serie: solo letras y números (sin espacios ni símbolos)
   const serialRegex = /^[a-zA-Z0-9]+$/;
